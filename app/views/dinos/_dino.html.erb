@@ -1,4 +1,4 @@
-<li class="dino" id="dino-<%= dino.id %>" data-id="<%= dino.id %>" data-original-id="<%= dino.original_id %>">
+<div class="dino" id="dino-<%= dino.id %>" data-id="<%= dino.id %>" data-original-id="<%= dino.original_id %>">
   <div class="dino-actions">
     <%= link_to 'destroy', dino, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
     |
@@ -11,6 +11,8 @@
     <%= simple_format dino.content %>
   </div>
 
-
   <%= render '/dinos/modal_form', dino: dino %>
-</li>
+
+  <br />
+</div>
+
