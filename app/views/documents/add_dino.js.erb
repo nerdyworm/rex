@@ -1,4 +1,4 @@
 $('.document-dinos').prepend("<%= j render @dino %>");
-$('#dino-<%= @dino.id %>').effect('highlight');
+$('#dino-<%= @dino.id %>').highlight();
 $("#original-dino-<%= @dino.original_id %>").addClass("included");
 
