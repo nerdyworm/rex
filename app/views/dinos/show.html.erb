@@ -1,15 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%= @dino.name %></h1>
 
-<p>
-  <b>Name:</b>
-  <%= @dino.name %>
-</p>
+  <div class="page-actions">
+    <%= link_to 'Edit', edit_dino_path(@dino), class: 'btn' %>
+  </div>
+</div>
 
-<p>
-  <b>Content:</b>
-  <%= @dino.content %>
-</p>
-
-
-<%= link_to 'Edit', edit_dino_path(@dino) %> |
-<%= link_to 'Back', dinos_path %>
+<div class="row">
+  <div class="span8">
+    <div class="dino-content">
+      <%= simple_format @dino.content %>
+    </div>
+  </div>
+  <div class="span4">
+    <strong>Copies</strong>
+    <ul>
+      <% @dino.copies.each do |dino| %>
+        <li><%= link_to dino.name, dino %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

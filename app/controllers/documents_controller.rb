@@ -83,11 +83,14 @@ class DocumentsController < ApplicationController
 
   def add_dino
     @document = Document.find(params[:id])
-    @dino     = Dino.find(params[:dino_id])
+    @original = Dino.find(params[:dino_id])
+    @dino     = @original.dup
 
-    @document.dinos << @dino.dup
+    @document.dinos.each do |dino|
+      dino.update_attribute(:idx, dino.idx + 1)
+    end
 
-    redirect_to @document, notice: 'Dino was added to the document'
+    @document.dinos << @dino
   end
 
   def order_dinos

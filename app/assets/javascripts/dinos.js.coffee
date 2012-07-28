@@ -1,4 +1,6 @@
 $ ->
+  documentId = $("#document").data("id")
+
   $("[name=toggle-sortable]").click ->
     if $(this).is(":checked")
        $(".sortable").sortable("option", "disabled", false ).addClass("enabled")
@@ -15,7 +17,7 @@ $ ->
         dinos[id] = index
 
       $.ajax
-        url: "/documents/3/order_dinos"
+        url: "/documents/#{documentId}/order_dinos"
         type: 'POST'
         dataType: 'json'
         data: dinos: dinos

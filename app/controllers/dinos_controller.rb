@@ -2,7 +2,7 @@ class DinosController < ApplicationController
   # GET /dinos
   # GET /dinos.json
   def index
-    @dinos = Dino.all
+    @dinos = Dino.original.all
 
     respond_to do |format|
       format.html # index.html.erb

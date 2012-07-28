@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(:version => 20120728161818) do
     t.string   "name"
     t.text     "content"
     t.integer  "document_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "idx"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+    t.integer  "idx",         :default => 0
     t.integer  "original_id"
   end
 

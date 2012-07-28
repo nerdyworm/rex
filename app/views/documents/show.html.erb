@@ -1,4 +1,4 @@
-<div class="page-header">
+<div class="page-header" id="document" data-id="<%= @document.id %>">
   <h1><%= @document.name %></h1>
 
   <div class="page-actions">
@@ -21,8 +21,8 @@
 
   <div class="span4">
     <ul>
-      <% Dino.all.each do |dino| %>
-        <li> <%= dino.name %> <%= link_to "add", "/documents/#{@document.id}/add_dino?dino_id=#{dino.id}" %></li>
+      <% Dino.original.each do |dino| %>
+        <li> <%= dino.name %> <%= link_to "add", "/documents/#{@document.id}/add_dino?dino_id=#{dino.id}", remote: true %></li>
       <% end %>
     </ul>
   </div>
