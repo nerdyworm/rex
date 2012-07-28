@@ -1,0 +1,25 @@
+<h1>Listing dinos</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Content</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @dinos.each do |dino| %>
+  <tr>
+    <td><%= dino.name %></td>
+    <td><%= dino.content %></td>
+    <td><%= link_to 'Show', dino %></td>
+    <td><%= link_to 'Edit', edit_dino_path(dino) %></td>
+    <td><%= link_to 'Destroy', dino, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Dino', new_dino_path %>

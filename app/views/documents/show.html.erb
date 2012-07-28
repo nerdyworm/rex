@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @document.name %>
+</p>
+
+<!--
+<% if params[:dino_id] %>
+  <p>
+    <b>Content:</b>
+    <%= @document.dinos.find(params[:dino_id]).content %>
+  </p>
+<% end %>
+-->
+
+<ul>
+  <% @document.dinos.each do |dino| %>
+    <% next unless dino.content.present? %>
+    <li>
+      <%= dino.content %>
+    </li>
+  <% end %>
+</ul>
+
+<ul>
+  <% @document.dinos.each do |dino| %>
+    <li>
+      <a href="/documents/<%= @document.id %>?dino_id=<%= dino.id %>"><%= dino.name %></a>
+      <%= link_to "Edit", edit_dino_path(dino) %>
+    </li>
+  <% end %>
+</ul>
+
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>
