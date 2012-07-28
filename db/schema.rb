@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120728013612) do
+ActiveRecord::Schema.define(:version => 20120728161818) do
 
   create_table "dinos", :force => true do |t|
     t.string   "name"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(:version => 20120728013612) do
     t.integer  "document_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "idx"
+    t.integer  "original_id"
   end
 
   create_table "document_types", :force => true do |t|

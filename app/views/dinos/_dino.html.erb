@@ -1,0 +1,12 @@
+<li class="dino" id="dino-<%= dino.id %>" data-id="<%= dino.id %>">
+  <a class="dino-edit" data-toggle="modal" href="#modal-dino-<%=dino.id %>" >edit</a>
+
+  <strong class="dino-name"><%= dino.name %></strong>
+
+  <div class="dino-content">
+    <%= simple_format dino.content %>
+  </div>
+
+
+  <%= render '/dinos/modal_form', dino: dino %>
+</li>

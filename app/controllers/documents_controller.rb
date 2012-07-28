@@ -80,4 +80,23 @@ class DocumentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def add_dino
+    @document = Document.find(params[:id])
+    @dino     = Dino.find(params[:dino_id])
+
+    @document.dinos << @dino.dup
+
+    redirect_to @document, notice: 'Dino was added to the document'
+  end
+
+  def order_dinos
+    @document = Document.find(params[:id])
+
+    params[:dinos].each do |id, idx|
+      @document.dinos.find(id).update_attribute(:idx, idx)
+    end
+
+    head :no_content
+  end
 end

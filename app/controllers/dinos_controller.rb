@@ -62,9 +62,11 @@ class DinosController < ApplicationController
       if @dino.update_attributes(params[:dino])
         format.html { redirect_to @dino, notice: 'Dino was successfully updated.' }
         format.json { head :no_content }
+        format.js   { }
       else
         format.html { render action: "edit" }
         format.json { render json: @dino.errors, status: :unprocessable_entity }
+        format.js   { }
       end
     end
   end

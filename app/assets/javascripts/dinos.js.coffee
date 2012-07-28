@@ -1,3 +1,21 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $("[name=toggle-sortable]").click ->
+    if $(this).is(":checked")
+       $(".sortable").sortable("option", "disabled", false ).addClass("enabled")
+    else
+       $(".sortable").sortable("option", "disabled", true ).removeClass("enabled")
+
+  $(".sortable").sortable
+    disabled: true
+    placeholder: "placeholder"
+    stop: ->
+      dinos = {}
+      $(".dino").each (index) -> 
+        id = $(this).data('id')
+        dinos[id] = index
+
+      $.ajax
+        url: "/documents/3/order_dinos"
+        type: 'POST'
+        dataType: 'json'
+        data: dinos: dinos

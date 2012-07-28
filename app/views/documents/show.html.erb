@@ -1,37 +1,32 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header">
+  <h1><%= @document.name %></h1>
 
-<p>
-  <b>Name:</b>
-  <%= @document.name %>
-</p>
+  <div class="page-actions">
+    <%= link_to 'Edit', edit_document_path(@document), class: 'btn' %>
+  </div>
+</div>
 
-<!--
-<% if params[:dino_id] %>
-  <p>
-    <b>Content:</b>
-    <%= @document.dinos.find(params[:dino_id]).content %>
-  </p>
-<% end %>
--->
+<div class="row">
+  <div class="span8">
+    <div class="toolbar">
+      <label>
+        <input name="toggle-sortable" type="checkbox"> Enable Sort
+      </label>
+    </div>
 
-<ul>
-  <% @document.dinos.each do |dino| %>
-    <% next unless dino.content.present? %>
-    <li>
-      <%= dino.content %>
-    </li>
-  <% end %>
-</ul>
+    <ul class="document-dinos sortable">
+      <%= render @document.dinos.order(:idx) %>
+    </ul>
+  </div>
 
-<ul>
-  <% @document.dinos.each do |dino| %>
-    <li>
-      <a href="/documents/<%= @document.id %>?dino_id=<%= dino.id %>"><%= dino.name %></a>
-      <%= link_to "Edit", edit_dino_path(dino) %>
-    </li>
-  <% end %>
-</ul>
+  <div class="span4">
+    <ul>
+      <% Dino.all.each do |dino| %>
+        <li> <%= dino.name %> <%= link_to "add", "/documents/#{@document.id}/add_dino?dino_id=#{dino.id}" %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
 
 
-<%= link_to 'Edit', edit_document_path(@document) %> |
-<%= link_to 'Back', documents_path %>
+

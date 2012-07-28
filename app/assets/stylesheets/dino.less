@@ -1,0 +1,56 @@
+ul.document-dinos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dino {
+  position: relative;
+
+  .dino-edit {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &:hover {
+    .dino-edit {
+      display: block;
+    }
+  }
+}
+
+.enabled {
+  .dino {
+    cursor: move;
+    .dino-content {
+      display: none;
+    }
+
+    &:hover {
+      .dino-edit {
+        display: none;
+      }
+    }
+  }
+}
+
+.placeholder {
+  border: 2px dashed #ccc;
+  height: 16px;
+  width: 100%;
+}
+
+.ui-sortable-helper {
+  background: white;
+}
+
+.toolbar {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+
+  input[type=checkbox] {
+    display: inline-block;
+  }
+}
