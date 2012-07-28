@@ -1,5 +1,9 @@
 <li class="dino" id="dino-<%= dino.id %>" data-id="<%= dino.id %>">
-  <a class="dino-edit" data-toggle="modal" href="#modal-dino-<%=dino.id %>" >edit</a>
+  <div class="dino-actions">
+    <%= link_to 'destroy', dino, remote: true, method: :delete, data: { confirm: 'Are you sure?' } %>
+    |
+    <a data-toggle="modal" href="#modal-dino-<%=dino.id %>" >edit</a>
+  </div>
 
   <strong class="dino-name"><%= dino.name %></strong>
 
