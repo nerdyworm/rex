@@ -1,5 +1,5 @@
 <div class="page-header" id="document" data-id="<%= @document.id %>">
-  <h1><%= @document.name %></h1>
+  <h1><%= @document.name %> <small>thigns</small></h1>
 
   <div class="page-actions">
     <%= link_to 'Edit', edit_document_path(@document), class: 'btn' %>
@@ -22,7 +22,12 @@
   <div class="span4">
     <ul>
       <% Dino.original.each do |dino| %>
-        <li> <%= dino.name %> <%= link_to "add", "/documents/#{@document.id}/add_dino?dino_id=#{dino.id}", remote: true %></li>
+        <li id="original-dino-<%= dino.id %>">
+          <%= dino.name %>
+          <%= link_to "show", dino %>
+          |
+          <%= link_to "add", "/documents/#{@document.id}/add_dino?dino_id=#{dino.id}", remote: true %>
+        </li>
       <% end %>
     </ul>
   </div>

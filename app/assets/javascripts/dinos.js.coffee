@@ -21,3 +21,9 @@ $ ->
         type: 'POST'
         dataType: 'json'
         data: dinos: dinos
+
+
+  $(".dino").each (index) -> 
+    id = $(this).data('original-id')
+    $("#original-dino-#{id}").addClass("included")
+
